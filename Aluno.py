@@ -89,10 +89,14 @@ class Aluno(UsuarioIFRO):
           break
         else:
           print("Resposta inválida. Por favor, escolha [A] para sim ou [B] para não.")
-      except UnboundLocalError:
+      except UnboundLocalError:#ocorre quando você tenta usar uma variável local antes de atribuir um valor a ela.
         print("Erro, a variavel não foi definida,Certifique-se de selecionar a opção correta e tente novamente.")
 
       except Exception as e:
             print(f"Ocorreu um erro inesperado: {e}")
             print("Por favor, tente novamente.")
 
+    
+# 'try':
+# 1. Evita que o programa falhe caso um erro ocorra durante a execução do código.
+# 2. O 'except' captura e trata erros específicos (UnboundLocalError)

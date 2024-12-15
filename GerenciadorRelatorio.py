@@ -7,6 +7,8 @@ class GerenciadorRelatorio:
   def adicionar_relatorio(self, relatorio):
     if not isinstance(relatorio, Relatorio):
       raise TypeError("Instância de Relatório")
+#O raise é uma exceção, garante que apenas ojetos do tipo 
+#Relatorio sejam adicionados a lista.
     self.__relatorio.append(relatorio)
 
   def lista_relatorio(self, modo=None):
