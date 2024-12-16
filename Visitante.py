@@ -22,32 +22,43 @@ class Visitante:
   def cadastrar_visitante(self):
     self.__nome=input("Digite seu nome:")
     time.sleep(0.5)
-        
+
     while True:
-      cpf= input("Digite seu CPF com 11 dígitos:")
-      self.__cpf=(cpf)
-      if len(str(cpf)) == 11:
-        self.__cpf=cpf
-        break
-      else:
-        print("Cpf inválido tente novamente com apenas 11 dígitos:")
-        time.sleep(0.5)
-        continue
-        
-    while True:
-      idade= int(input("Digite sua idade:"))
-      self.__idade=(idade)
-      if idade>=18:
-        break
-      else:
-        entrada=input("Menor de 18 anos precisa estar acompanhado de um responsável legal Você está acompanhado?\n\n[A]Sim\n[B]Não\n\nResposta:")
-        if entrada.upper()=="A":
+      try:# O try vai certificar se o CPF é válido com 11 dígitos
+        #Cado esteja errado vai lança um Valuerror
+        cpf= input("Digite seu CPF com 11 dígitos:")
+        self.__cpf=(cpf)
+        if len(str(cpf)) == 11:
+          self.__cpf=cpf
           break
         else:
-          print ("Acesso negado, você é menor de 18 anos!")
-          time.sleep (1)
-          exit()
-              
+          raise ValueError("CPF inválido.")
+# O raise vai interromper o fluxo normal da função se a entrada for invalida.
+      except ValueError as e:#O except Vai capturar a mensagem e imprime na tela
+        print(f"Valor inválido{e}. Tente novamente")
+
+    while True:
+      try:
+        idade= int(input("Digite sua idade:"))
+        self.__idade=(idade)
+        if idade>=18:
+          break
+        else:
+          entrada=input("Menor de 18 anos precisa estar acompanhado de um responsável legal Você está acompanhado?\n\n[A]Sim\n[B]Não\n\nResposta:")
+        if entrada.upper()=="A":
+          break
+        elif entrada.upper()=="B":
+          raise PermissionError('Acesso Negado, menor de idade')
+        else:
+          raise TypeError("Resposta Inválida. Escolha [A] ou [B]")
+      except TypeError as e:#Direcionado para capturar erro de tipo de entrada errada.
+        print(f"Erro, tente novamente{e}")
+        time.sleep(1)
+      except PermissionError as e:#Usado Para restringir acesso de menores de idade.
+        print(f"{e}")
+        time.sleep(1)
+        exit()
+
     while True:
       documento = input("É necessário o documento de identificação (RG, IDENTIDADE, CNH, CARTEIRA DE HABILITAÇÃO): ").strip().upper()
       if documento in ["RG", "IDENTIDADE", "CNH", "CARTEIRA DE HABILITAÇÃO"]:
