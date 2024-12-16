@@ -74,7 +74,6 @@ class Aluno(UsuarioIFRO):
 #Função para atualizar a turma do aluno set:
   def set_turma(self):
     while True:
-      try:
         resposta = input(f"\n{self.__nome},deseja atualizar sua turma?\n\n[A] Sim\n[B] Não\nResposta: ")
         print("*=*="*6)
         if resposta.upper() == "A":
@@ -92,10 +91,3 @@ class Aluno(UsuarioIFRO):
           break
         else:
           print("Resposta inválida. Por favor, escolha [A] para sim ou [B] para não.")
-      except UnboundLocalError:
-        print("Erro, a variavel não foi definida,Certifique-se de selecionar a opção correta e tente novamente.")
-
-      except Exception as e:
-            print(f"Ocorreu um erro inesperado: {e}")
-            print("Por favor, tente novamente.")
-
