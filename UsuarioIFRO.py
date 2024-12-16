@@ -24,7 +24,15 @@ class UsuarioIFRO(ABC):
     self.__senha = int(input("Digite sua senha: "))
     return self.__senha
   
-  def set_senha(self, novasenha):
-    self.__novasenha =("Digite sua nova senha:")
-    self.__novasenha = self.__senha
-    print("Senha alterada com sucesso")
+  def set_senha(self):
+    try:
+      novasenha=int(input("Digite sua nova senha"))
+      if len(str(novasenha))==4:
+        self.__senha=novasenha
+        print("Senha alterada com sucesso!!")
+      else:
+        print("Erro, a senha deve ter 4 dígitos")
+    except ValueError:#Vai capturar erro quando a entrada não é um número válido
+      print("ERRO: a senha deve ser em número.tente de novo")
+    except Exception as e:#Serve para capturar qualquer erro inesperados
+      print(f"Ocorreu um erro:{e}")
