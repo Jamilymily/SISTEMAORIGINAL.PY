@@ -10,12 +10,15 @@ class Aluno(UsuarioIFRO):
 
 #Função cadastrar Aluno:
   def cadastrar_aluno(self):
-    print("Cadastro Aluno,dados necessários:\n\n01-Nome\n02-Matricula\n03-Turma\n04-CPF\n05-Senha\n\n")
-    time.sleep(2)
-
-    print("*=*=*"*6)
-    self.__nome =str(input("Digite seu nome: "))
-    time.sleep(0.5)
+    try:
+      print("Cadastro Aluno,dados necessários:\n\n01-Nome\n02-Matricula\n03-Turma\n04-CPF\n05-Senha\n\n")
+      time.sleep(2)
+  
+      print("*=*=*"*6)
+      self.__nome =str(input("Digite seu nome: "))
+      time.sleep(0.5)
+    except ValueError:
+      print("Apenas letras são aceitas neste campo, tente novamente")
 
 #Condições de validação dos dados do Aluno(a):
     while True:
