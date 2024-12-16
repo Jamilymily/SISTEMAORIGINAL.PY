@@ -14,7 +14,7 @@ class Aluno(UsuarioIFRO):
     time.sleep(2)
 
     print("*=*=*"*6)
-    self.__nome =input("Digite seu nome: ")
+    self.__nome =str(input("Digite seu nome: "))
     time.sleep(0.5)
 
 #Condições de validação dos dados do Aluno(a):
