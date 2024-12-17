@@ -1,5 +1,6 @@
 #Alunas: Ádiles Naiandra, Alice Néry, Ana Andrade, Jamily Emanuelle
 #Turma: 2º ano informática vespertino
+#Disciplina: Programação Orientada a OBjetos
  
 import time
 from Servidor import*
