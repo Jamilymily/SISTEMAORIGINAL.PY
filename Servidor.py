@@ -24,13 +24,24 @@ class UsuarioIFRO(ABC):
     return self.__senha
 
   def criar_senha (self):
-    self.__senha = int(input("Digite sua senha: "))
-    return self.__senha
-  
-  def set_senha(self, novasenha):
-    self.__novasenha =("Digite sua nova senha:")
-    self.__novasenha = self.__senha
-    print("Senha alterada com sucesso")
+    try:
+      self.__senha = int(input("Digite sua senha: "))
+      return self.__senha
+    except ValueError:
+      print("Erro: Senha deve ser um numero inteiro")
+    except Exception as e:
+      print(f"Ocorreu um erro inesperado: {e}")
+
+  def set_senha(self):
+    try:
+      nova_senha = int(input("Digite sua nova senha (apenas numeros):"))
+      self.__senha = nova_senha
+      print("Senha alterada com sucesso.")
+    except ValueError:
+      print("Erro: Senha deve ser numero inteiro.")
+    except Exception as e:
+      print(f"Ocorreu um erro inesperado: {e}")
+        
 
 class Servidor(UsuarioIFRO):
   def __init__ (self,nome,cpf,senha,matricula,departamento):
