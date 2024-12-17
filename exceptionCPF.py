@@ -1,0 +1,2 @@
+class ErrorCPF(Exception):
+    pass

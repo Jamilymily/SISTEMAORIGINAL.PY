@@ -17,13 +17,3 @@ class Recepcionista(Servidor):
          except Exception:
              print("""Algo deu errado. Tente novamente.
              """)
-             while True:
-            liberar = input("Deseja liberar visitante? SIM [1] ou NÃO [2]")
-            if liberar == 1:
-                print("Acesso liberado!")
-                break
-            elif liberar == 2:
-                print("Acesso negado!")
-                break
-            else:
-                print("Tente novamente")

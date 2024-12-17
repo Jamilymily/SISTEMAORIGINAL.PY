@@ -1,6 +1,7 @@
 
 import time
 from abc import ABC
+from exceptionCPF import *
 
 from UsuarioIFRO import UsuarioIFRO
 
@@ -57,14 +58,16 @@ class Servidor(UsuarioIFRO):
     
 #validação de Cpf:
       while True:
-        cpf= input("Digite seu CPF com 11 dígitos:")
-        self.__cpf=(cpf)
-        if len(str(cpf)) == 11:
-          self.__cpf=cpf
-          break
-        else:
-          print("Cpf inválido tente novamente com apenas 11 dígitos:")
-          continue
+        try:
+          cpf= input("Digite seu CPF com 11 dígitos:")
+          self.__cpf=(cpf)
+          if len(str(cpf)) == 11:
+            self.__cpf=cpf
+            break
+          if len(str(cpf)) != 11:
+            raise ErrorCPF ("O CPF deve conter exatamente 11 dígitos.")
+        except ErrorCPF:
+          print("O CPF deve conter exatamente 11 dígitos.")
       time.sleep(0.5)
     
 #validação de matrícula:
@@ -93,39 +96,27 @@ class Servidor(UsuarioIFRO):
       print("Finalizando o cadastro...")
 
   def exibirDados_servidor(self):
-    try:
-      time.sleep(1)
-      print("*=*"*6)
-      print(f"Nome: {self.__nome}\nCPF:{self.__cpf}\nMatricula: {self.__matricula}\nSenha:{self.__senha}\nDepartamento:{self.__departamento}")
-      print("*=*"*6)
-    except Exception as e:
-      print(f"Ocorreu um erro ao mostar os dados:{e}")
-    
-    finally:
-      print("Fim da exibição")
+    time.sleep(1)
+    print("*=*"*6)
+    print(f"Nome: {self.__nome}\nCPF:{self.__cpf}\nMatricula: {self.__matricula}\nSenha:{self.__senha}\nDepartamento:{self.__departamento}")
+    print("*=*"*6)
   
 
 #Set escolha do usuário para troca de departamento
   def set_departamento(self):
-    try:
-      while True:
-        atualiza = input(f"{self.__nome}, deseja atualizar seu departamento?\n\n[A]Sim\n[B]Não\n\nResposta: ")
-        if atualiza.upper() == "A":
-          novo_departamento= input("Digite seu novo departamento(máximo 30 caracteres):")
-          if len(novo_departamento)<= 50:
-            self.__departamento=novo_departamento
-            print("Departamento atualizado com sucesso.")
-            return
-          else:
-            print("O departamento deve ter no máximo 30 caracteres. Por favor,digite novamente.")
-            break
-        elif atualiza.upper() == "B":
-          print(f"Ok, {self.__nome},você optou por não trocar de departamento")
-          break
+    while True:
+      atualiza = input(f"{self.__nome}, deseja atualizar seu departamento?\n\n[A]Sim\n[B]Não\n\nResposta: ")
+      if atualiza.upper() == "A":
+        novo_departamento= input("Digite seu novo departamento(máximo 30 caracteres):")
+        if len(novo_departamento)<= 50:
+          self.__departamento=novo_departamento
+          print("Departamento atualizado com sucesso.")
+          return
         else:
-          print("Resposta inválida. Por favor, escolha [A] para sim ou [B] para não.")
-    except Exception as e:
-      print(f"Ocorreu um erro de atualização")
-    finally:
-      print("Processo de atualização finalizado")
-
+          print("O departamento deve ter no máximo 30 caracteres. Por favor,digite novamente.")
+          break
+      elif atualiza.upper() == "B":
+        print(f"Ok, {self.__nome},você optou por não trocar de departamento")
+        break
+      else:
+        print("Resposta inválida. Por favor, escolha [A] para sim ou [B] para não.")

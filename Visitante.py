@@ -35,18 +35,23 @@ class Visitante:
         continue
         
     while True:
-      idade= int(input("Digite sua idade:"))
-      self.__idade=(idade)
-      if idade>=18:
-        break
-      else:
-        entrada=input("Menor de 18 anos precisa estar acompanhado de um responsável legal Você está acompanhado?\n\n[A]Sim\n[B]Não\n\nResposta:")
-        if entrada.upper()=="A":
+      try:
+        idade= int(input("Digite sua idade:"))
+        self.__idade=(idade)
+        if idade>=18:
           break
         else:
-          print ("Acesso negado, você é menor de 18 anos!")
-          time.sleep (1)
-          exit()
+          entrada=input("Menor de 18 anos precisa estar acompanhado de um responsável legal Você está acompanhado?\n\n[A]Sim\n[B]Não\n\nResposta:")
+          if entrada.upper()=="A":
+            break
+          else:
+            print ("Acesso negado, você é menor de 18 anos!")
+            time.sleep (1)
+            exit()
+      except ValueError:
+        print("Idade inválida. Por favor, digite um número inteiro.")
+        time.sleep(0.5)
+        continue
               
     while True:
       documento = input("É necessário o documento de identificação (RG, IDENTIDADE, CNH, CARTEIRA DE HABILITAÇÃO): ").strip().upper()
