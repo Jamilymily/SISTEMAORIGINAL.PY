@@ -1,4 +1,4 @@
-#Alunas: Ádiles Naiandra, Alice Néry, Ana Andrade, Jamily Emanuelle
+#Aluna: Jamily Emanuelle
 #Turma: 2º ano informática vespertino
  
 import time
