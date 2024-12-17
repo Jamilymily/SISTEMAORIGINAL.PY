@@ -1,6 +1,6 @@
 from datetime import datetime
 
-class Relatorio:
+class Relatorio(Exception):
   def __init__(self, id, tipo, dataEntrada, visitantes=0):
     if not isinstance(dataEntrada, datetime):
       raise TypeError("Data é um objeto datetime")
