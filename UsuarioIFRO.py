@@ -36,3 +36,5 @@ class UsuarioIFRO(ABC):
       print("ERRO: a senha deve ser em número.tente de novo")
     except Exception as e:#Serve para capturar qualquer erro inesperados
       print(f"Ocorreu um erro:{e}")
+    finally:
+      print("Processo de alteração de senha finalizado")
