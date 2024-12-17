@@ -37,6 +37,11 @@ class Relatorio:
     print("Exibição finalizada")
 
   def registrar_saida(self, dataSaida):
-    if not isinstance(dataSaida, datetime):
-      raise TypeError("A data de saída é um objeto datetime")
-    self.__dataSaida = dataSaida
+    try:
+      if not isinstance(dataSaida, datetime):
+        raise TypeError("A data de saída é um objeto datetime")
+        self.__dataSaida = dataSaida
+    except TypeError as e:
+      print(f"Erro:{e}")
+    finally:
+      print("O método registrar_saida foi executado.")
