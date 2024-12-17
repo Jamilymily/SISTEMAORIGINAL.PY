@@ -17,8 +17,8 @@ class Aluno(UsuarioIFRO):
       print("*=*=*"*6)
       self.__nome =str(input("Digite seu nome: "))
       time.sleep(0.5)
-      except ValueError:
-        print("Apenas letras são aceitas neste campo, tente novamente")
+    except ValueError:
+      print("Apenas letras são aceitas neste campo, tente novamente")
 
 #Condições de validação dos dados do Aluno(a):
     while True:
