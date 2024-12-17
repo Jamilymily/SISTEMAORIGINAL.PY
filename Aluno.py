@@ -10,58 +10,54 @@ class Aluno(UsuarioIFRO):
 
 #Função cadastrar Aluno:
   def cadastrar_aluno(self):
-    print("Cadastro Aluno,dados necessários:\n\n01-Nome\n02-Matricula\n03-Turma\n04-CPF\n05-Senha\n\n")
-    time.sleep(2)
+    try:
+       print("Cadastro Aluno,dados necessários:\n\n01-Nome\n02-Matricula\n03-Turma\n04-CPF\n05-Senha\n\n")
+       time.sleep(2)
+       print("*=*=*"*6)
+       self.__nome =input("Digite seu nome: ")
+       time.sleep(0.5)
+       
+       while True:
+        turma=input("Digite sua Turma:")
+        if len(str(turma))<=30:
+           self.__turma=turma
+           break
+        else:
+           print("Digite novamente: ")
+           continue
+        
+       while True:
+        cpf=input("Digite seu CPF com 11 dígitos: ")
+        if len(str(cpf)) == 11:
+           self.__cpf=cpf
+           break
+        else:
+           print("Cpf inválido tente novamente com 11 dígitos:")
+           continue
+          
+       while True:   
+        matricula=input("Digite sua Matricula com 13 dígitos:")
+        self.__matricula=(matricula)
+        if len(str(matricula))==13:
+          self.__matricula=matricula
+          break
+        else:
+          print("Matricula inválida tente novamente com 13 dígitos:")
+          continue
 
-    print("*=*=*"*6)
-    self.__nome =input("Digite seu nome: ")
-    time.sleep(0.5)
-
-#Condições de validação dos dados do Aluno(a):
-    while True:
-      turma=input("Digite sua Turma:")
-      if len(str(turma))<=30:
-        self.__turma=turma
-        break
-      else:
-        print("Digite novamente: ")
-      continue
-    time.sleep(0.5)
+       while True:
+         senha= input("Digite sua senha com 4 dígitos: ")
+         self.__senha=(senha)
+         if len(str(self.__senha))== 4:
+           self._senha=senha
+           break
+         else:
+           print("Senha inválida tente novamente com 4 dígitos:")
+           continue
     
-#Validação de Identidade:    
-    while True:
-      cpf=input("Digite seu CPF com 11 dígitos: ")
-      if len(str(cpf)) == 11:
-        self.__cpf=cpf
-        break
-      else:
-        print("Cpf inválido tente novamente com 11 dígitos:")
-        continue
-    time.sleep(0.5)
-    
-#Validação de Matrícula:
-    while True:    
-      matricula=input("Digite sua Matricula com 13 dígitos:")
-      self.__matricula=(matricula)
-      if len(str(matricula))==13:
-        self.__matricula=matricula
-        break
-      else:
-        print("Matricula inválida tente novamente com 13 dígitos:")
-        continue
-    time.sleep(0.5)
-    
-#Validação de senha do Aluno:      
-    while True:
-      senha= input("Digite sua senha com 4 dígitos: ")
-      self.__senha=(senha)
-      if len(str(self.__senha))== 4:
-        self._senha=senha
-        break
-      else:
-        print("Senha inválida tente novamente com 4 dígitos:")
-        continue
-    time.sleep(0.5)
+    except Exception as e:
+            print(f"Ocorreu um erro durante o cadastro: {e}")
+            print("Por favor, tente novamente.")
 
 #Função para printar os dados dos alunos
   def exibirDados_aluno(self):
