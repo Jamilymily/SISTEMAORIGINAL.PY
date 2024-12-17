@@ -66,33 +66,29 @@ class Aluno(UsuarioIFRO):
 
 #Função para atualizar a turma do aluno set:
   def set_turma(self):
-    while True:
-      try:
-        resposta = input(f"\n{self.__nome},deseja atualizar sua turma?\n\n[A] Sim\n[B] Não\nResposta: ")
-        print("*=*="*6)
-        if resposta.upper() == "A":
-          nova_turma = input("Digite sua nova turma (máximo 30 caracteres):")
-          if len(nova_turma) <= 30:
-            self.__turma = nova_turma
-            time.sleep(1)
-            print("\nTurma atualizada com sucesso:)")
-            print("*=*="*6)
-            return
-          else:
-            print("Erro: A tuma deve ter no máximo 30 caracteres")
-        elif resposta.upper() == "B":
-          print(f"Ok, {self.__nome},você optou por não trocar de turma.")
-          break
-        else:
-          print("Resposta inválida. Por favor, escolha [A] para sim ou [B] para não.")
-      except UnboundLocalError:#ocorre quando você tenta usar uma variável local antes de atribuir um valor a ela.
-        print("Erro, a variavel não foi definida,Certifique-se de selecionar a opção correta e tente novamente.")
+       try:
+         while True:
+           resposta = input(f"\n{self.__nome},deseja atualizar sua turma?\n\n[A] Sim\n[B] Não\nResposta: ")
+           print("*=*="*6)
+           if resposta.upper() == "A":
+             nova_turma = input("Digite sua nova turma (máximo 30 caracteres):")
+           if len(nova_turma) <= 30:
+             self.__turma = nova_turma
+             time.sleep(1)
+             print("\nTurma atualizada com sucesso:)")
+             print("*=*="*6)
+             return
+           else:
+             print("Erro: A tuma deve ter no máximo 30 caracteres")
+           elif resposta.upper() == "B":
+           print(f"Ok, {self.__nome},você optou por não trocar de turma.")
+           break
+       else:
+         print("Resposta inválida. Por favor, escolha [A] para sim ou [B] para não.")
+       except UnboundLocalError:#ocorre quando você tenta usar uma variável local antes de atribuir um valor a ela.
+    print("Erro, a variavel não foi definida,Certifique-se de selecionar a opção correta e tente novamente.")
 
       except Exception as e:
             print(f"Ocorreu um erro inesperado: {e}")
             print("Por favor, tente novamente.")
 
-    
-# 'try':
-# 1. Evita que o programa falhe caso um erro ocorra durante a execução do código.
-# 2. O 'except' captura e trata erros específicos (UnboundLocalError)
