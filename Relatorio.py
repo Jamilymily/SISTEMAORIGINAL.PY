@@ -3,7 +3,7 @@ from datetime import datetime
 class Relatorio:
   def __init__(self, id, tipo, dataEntrada, visitantes=0):
     if not isinstance(dataEntrada, datetime):
-      raise TypeError("Data é um objeto datetime")
+      
 
     self.__id = id
     self.__tipo = tipo
