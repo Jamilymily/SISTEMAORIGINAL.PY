@@ -18,7 +18,6 @@ class Recepcionista(Servidor):
              print("""Algo deu errado. Tente novamente.
              """)
              while True:
-         try:
             liberar = input("Deseja liberar visitante? SIM [1] ou NÃO [2]")
             if liberar == 1:
                 print("Acesso liberado!")
