@@ -9,16 +9,20 @@ class Aluno(UsuarioIFRO):
     return self.__turma
 
 #Função cadastrar Aluno:
+
   def cadastrar_aluno(self):
-    try:
-      print("Cadastro Aluno,dados necessários:\n\n01-Nome\n02-Matricula\n03-Turma\n04-CPF\n05-Senha\n\n")
-      time.sleep(2)
-  
-      print("*=*=*"*6)
-      self.__nome =str(input("Digite seu nome: "))
-      time.sleep(0.5)
-    except ValueError:
-      print("Apenas letras são aceitas neste campo, tente novamente")
+    while True:
+      try:
+        print("Cadastro Aluno,dados necessários:\n\n01-Nome\n02-Matricula\n03-Turma\n04-CPF\n05-Senha\n\n")
+        time.sleep(2)
+    
+        print("*=*=*"*6)
+        self.__nome = input("Digite seu nome: ")
+        if not all(c.isalpha() or c.isspace() for c in self.__nome):
+          raise ValueError ("Apenas letras são aceitas neste campo, tente novamente")
+        break
+      except ValueError:
+        print("Apenas letras são aceitas neste campo, tente novamente")
 
 #Condições de validação dos dados do Aluno(a):
     while True:
@@ -64,8 +68,6 @@ class Aluno(UsuarioIFRO):
       else:
         print("Senha inválida tente novamente com 4 dígitos:")
         continue
-      finally:
-        print("Finalizando o cadastro...")
     time.sleep(0.5)
 
 #Função para printar os dados dos alunos
